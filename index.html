@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barath Kumar S — AI Data Operations Specialist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080b10;
+    --bg2: #0d1117;
+    --bg3: #111820;
+    --card: #0f1621;
+    --border: rgba(255,255,255,0.07);
+    --accent: #00d4ff;
+    --accent2: #7b61ff;
+    --accent3: #00ff88;
+    --text: #e8edf5;
+    --muted: #6b7a90;
+    --light: #a8b5c8;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 4rem;
+    background: rgba(8, 11, 16, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 0.5rem 1.25rem;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .nav-cta:hover {
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-glow {
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(0,212,255,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-bg-glow2 {
+    position: absolute;
+    bottom: -20%;
+    left: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(123,97,255,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(0,212,255,0.08);
+    border: 1px solid rgba(0,212,255,0.2);
+    border-radius: 100px;
+    padding: 0.35rem 1rem;
+    font-size: 0.78rem;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--accent3);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.4); }
+  }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 800;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.8s ease 0.1s both;
+  }
+
+  h1 .line1 { display: block; color: var(--text); }
+  h1 .line2 { display: block; color: var(--accent); }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--light);
+    max-width: 520px;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.8s ease 0.2s both;
+    font-weight: 300;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    animation: fadeUp 0.8s ease 0.3s both;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--bg);
+    padding: 0.85rem 2rem;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+  }
+
+  .btn-primary:hover {
+    background: #33ddff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0,212,255,0.3);
+  }
+
+.btn-secondary {
+  background: transparent;
+  color: var(--light);
+  padding: 0.85rem 2rem;
+  border-radius: 100px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+  display: inline-block;
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+  /* ── PROFILE CARD ── */
+  .profile-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    min-width: 240px;
+    animation: fadeUp 0.8s ease 0.4s both;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .profile-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+  }
+
+  .profile-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--bg);
+    border: 3px solid var(--bg);
+    box-shadow: 0 0 0 3px var(--accent);
+  }
+
+  .profile-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .profile-title {
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  .available-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(0,255,136,0.08);
+    border: 1px solid rgba(0,255,136,0.2);
+    border-radius: 100px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.72rem;
+    color: var(--accent3);
+    font-weight: 500;
+  }
+
+  .available-badge::before {
+    content: '';
+    width: 5px; height: 5px;
+    background: var(--accent3);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  .profile-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .stat {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 0.75rem;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--accent);
+  }
+
+  .stat-label {
+    font-size: 0.68rem;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 5rem 4rem; position: relative; z-index: 1; }
+
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 20px; height: 1px;
+    background: var(--accent);
+  }
+
+  h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .section-intro {
+    color: var(--light);
+    font-size: 1rem;
+    max-width: 550px;
+    font-weight: 300;
+    line-height: 1.75;
+    margin-bottom: 3rem;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--light);
+    font-size: 0.97rem;
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+    font-weight: 300;
+  }
+
+  .about-facts {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .fact-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1rem 1.25rem;
+    transition: border-color 0.2s;
+  }
+
+  .fact-row:hover { border-color: rgba(0,212,255,0.3); }
+
+  .fact-icon {
+    width: 38px; height: 38px;
+    background: rgba(0,212,255,0.08);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .fact-label {
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 2px;
+  }
+
+  .fact-value {
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--bg2); }
+
+  .exp-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+/* ── EXPERIENCE CARD PREMIUM HOVER ── */
+.exp-card {
+  position: relative;
+  background: rgba(15, 22, 33, 0.85);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 1.6rem 2rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.5rem;
+  align-items: start;
+
+  overflow: hidden;
+
+  max-height: 130px;
+
+  transition:
+    max-height 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease,
+    background 0.4s ease;
+}
+
+/* LEFT ACCENT BAR */
+.exp-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(
+    180deg,
+    var(--accent),
+    var(--accent2)
+  );
+
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* BLUE GLOW BACKGROUND */
+.exp-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(0, 212, 255, 0.12),
+      transparent 55%
+    );
+
+  opacity: 0;
+  transition: opacity 0.5s ease;
+
+  pointer-events: none;
+}
+
+/* HOVER */
+.exp-card:hover {
+  max-height: 420px;
+
+  transform: translateY(-6px);
+
+  border-color: rgba(0,212,255,0.22);
+
+  background: rgba(15, 22, 33, 0.95);
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.45),
+    0 0 40px rgba(0,212,255,0.08);
+}
+
+.exp-card:hover::before {
+  opacity: 1;
+}
+
+.exp-card:hover::after {
+  opacity: 1;
+}
+
+/* DESCRIPTION HIDDEN INITIALLY */
+.exp-points {
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+
+  opacity: 0;
+  transform: translateY(18px);
+
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+
+  transition-delay: 0.08s;
+}
+
+/* REVEAL DESCRIPTION */
+.exp-card:hover .exp-points {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* LIST ITEMS */
+.exp-points li {
+  font-size: 0.88rem;
+  color: var(--light);
+  padding-left: 1rem;
+  position: relative;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.exp-points li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 0.8rem;
+}
+  /* ── PROJECTS ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2rem;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+  }
+
+  .project-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0,212,255,0.03), transparent);
+    opacity: 0;
+    transition: opacity 0.2s;
+
+    pointer-events: none;
+  }
+
+  .project-card:hover {
+    border-color: rgba(0,212,255,0.25);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+
+  .project-card:hover::after { opacity: 1; }
+
+  .project-icon {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .project-card:nth-child(1) .project-icon { background: rgba(0,212,255,0.1); }
+  .project-card:nth-child(2) .project-icon { background: rgba(123,97,255,0.1); }
+  .project-card:nth-child(3) .project-icon { background: rgba(0,255,136,0.1); }
+  .project-card:nth-child(4) .project-icon { background: rgba(255,165,0,0.1); }
+
+  .project-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .project-desc {
+    font-size: 0.875rem;
+    color: var(--light);
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+    font-weight: 300;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .ptag {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.7rem;
+    border-radius: 100px;
+    font-weight: 500;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    letter-spacing: 0.03em;
+  }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--bg2); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  /* Flip card */
+  .skill-flip {
+    perspective: 1000px;
+    height: 230px;
+    cursor: pointer;
+  }
+
+  .skill-flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  .skill-flip:hover .skill-flip-inner {
+    transform: rotateY(180deg);
+  }
+
+  .skill-front, .skill-back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    padding: 1.75rem;
+  }
+
+  .skill-flip:hover .skill-front,
+  .skill-flip:hover .skill-back {
+    border-color: rgba(0,212,255,0.35);
+    box-shadow: 0 0 30px rgba(0,212,255,0.07);
+  }
+
+  .skill-front {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 0.6rem;
+  }
+
+  .skill-back {
+    transform: rotateY(180deg);
+    background: linear-gradient(135deg, #0d1a2a, #0f1621);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1.4rem 1.5rem;
+  }
+
+  .skill-cat-icon { font-size: 2.2rem; }
+
+  .skill-cat-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--accent);
+  }
+
+  .skill-cat-hint {
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  .skill-back-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.7rem;
+  }
+
+  .skill-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    overflow-y: auto;
+    max-height: 162px;
+  }
+
+  .skill-list::-webkit-scrollbar { width: 3px; }
+  .skill-list::-webkit-scrollbar-thumb { background: rgba(0,212,255,0.25); border-radius: 4px; }
+
+  .skill-list li {
+    font-size: 0.78rem;
+    color: var(--light);
+    padding: 0.28rem 0.6rem;
+    background: rgba(255,255,255,0.03);
+    border-radius: 6px;
+    border-left: 2px solid rgba(0,212,255,0.35);
+    font-weight: 300;
+    line-height: 1.4;
+  }
+
+  /* ── EDUCATION ── */
+  .edu-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    max-width: 700px;
+  }
+
+  .edu-icon {
+    width: 64px; height: 64px;
+    background: rgba(123,97,255,0.1);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    flex-shrink: 0;
+  }
+
+  .edu-degree {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .edu-school {
+    font-size: 0.88rem;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+  }
+
+  .edu-year {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--bg2); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .contact-info h2 { margin-bottom: 1rem; }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1rem 1.25rem;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.2s;
+  }
+
+  .contact-link:hover {
+    border-color: rgba(0,212,255,0.3);
+    transform: translateX(4px);
+  }
+
+  .contact-link-icon {
+    width: 38px; height: 38px;
+    background: rgba(0,212,255,0.08);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .contact-link-label {
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 2px;
+  }
+
+  .contact-link-value {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  /* ── FORM ── */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-group label {
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 0.85rem 1rem;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+    resize: none;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: rgba(0,212,255,0.4);
+  }
+
+  .form-group textarea { height: 130px; }
+
+  .form-submit {
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    border-radius: 100px;
+    padding: 0.9rem 2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    align-self: flex-start;
+  }
+
+  .form-submit:hover {
+    background: #33ddff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0,212,255,0.3);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2rem 4rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-copy {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .footer-links a {
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--accent); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── DIVIDER ── */
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 0 4rem;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { padding: 7rem 1.5rem 3rem; }
+    .hero-content { grid-template-columns: 1fr; }
+    .profile-card { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    footer { padding: 1.5rem; flex-direction: column; gap: 1rem; text-align: center; }
+    .section-divider { margin: 0 1.5rem; }
+  }
+
+  @media (max-width: 600px) {
+    .skills-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">BK.</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:bkpersonalacc@gmail.com" class="nav-cta">Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-glow"></div>
+  <div class="hero-bg-glow2"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-tag">Available for AI Projects</div>
+      <h1>
+        <span class="line1">Barath Kumar S</span>
+        <span class="line2">AI Data Ops.</span>
+      </h1>
+      <p class="hero-desc">
+        Helping build smarter AI systems through RLHF evaluation, multi-modal annotation, content moderation, and precision-driven human feedback workflows.
+      </p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-primary">View My Work</a>
+        <a href="#contact" class="btn-secondary">Get In Touch</a>
+      </div>
+    </div>
+    <div class="profile-card">
+      <div class="profile-avatar">BK</div>
+      <div class="profile-title">AI Data Operations Specialist<br>Coimbatore, India</div>
+      <div class="available-badge">Open to work</div>
+      <div class="profile-stats">
+        <div class="stat">
+          <div class="stat-num">Neural</div>
+          <div class="stat-label">Evaluation</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">Human</div>
+          <div class="stat-label">Intelligence</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">Precision</div>
+          <div class="stat-label">Annotation</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">Trusted</div>
+          <div class="stat-label">Workflows</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">About Me</div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <h2>Detail-driven.<br>AI-focused.</h2>
+        <br>
+        <p>An AI Data Operations professional specializing in making AI systems smarter, safer, and more reliable—one evaluation at a time. My work spans RLHF-based response evaluation, multi-modal data annotation (text, image, video, audio), content moderation, and prompt quality assessment, contributing to human-in-the-loop AI workflows for global clients in both remote and on-site environments.</p>
+        <p>Alongside my AI work, I’ve developed a growing interest in video editing and visual storytelling, which strengthens my understanding of multimedia content quality and helps me approach video and audio annotation tasks with a more creative and practical perspective.
+        <p>I’m driven by curiosity and precision, with a strong belief that the quality of training data directly shapes the intelligence of tomorrow’s AI systems.
+      </div>
+      <div class="about-facts reveal">
+        <div class="fact-row">
+          <div class="fact-icon">🎵</div>
+          <div>
+            <div class="fact-label">OFFSCREEN</div>
+            <div class="fact-value">Video Editing • Music • Cooking</div>
+          </div>
+        </div>
+        <div class="fact-row">
+          <div class="fact-icon">🤓</div>
+          <div>
+            <div class="fact-label">INTERESTS</div>
+            <div class="fact-value">AI • Creative Media • Tech</div>
+          </div>
+        </div>
+        <div class="fact-row">
+          <div class="fact-icon">🌐</div>
+          <div>
+            <div class="fact-label">Work Mode</div>
+            <div class="fact-value">Remote / Freelance / Full-time</div>
+          </div>
+        </div>
+        <div class="fact-row">
+          <div class="fact-icon">🗣️</div>
+          <div>
+            <div class="fact-label">Languages</div>
+            <div class="fact-value">English (Professional) · Tamil (Native)</div>
+          </div>
+        </div>
+        <div class="fact-row">
+          <div class="fact-icon">🎓</div>
+          <div>
+            <div class="fact-label">CURRENTLY LEARNING</div>
+            <div class="fact-value">AI Workflows • Prompting • Automation</div>
+          </div>
+        </div>
+        <div class="fact-row">
+          <div class="fact-icon">🔨</div>
+          <div>
+            <div class="fact-label">Portfolio Workflow</div>
+            <div class="fact-value">Claude • ChatGPT • VS Code • GitHub</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-label">Work Experience</div>
+    <h2>Where I've<br>contributed</h2>
+    <p class="section-intro">From AI training platforms to content moderation and annotation — here's my professional journey.</p>
+    <div class="exp-timeline">
+
+      <div class="exp-card reveal">
+        <div class="exp-logo">iM</div>
+        <div>
+          <div class="exp-company">iMerit</div>
+          <div class="exp-role">AI Data Operations Associate (Freelance / Project-Based)</div>
+          <div class="exp-meta">
+            <span>📅 Mar 2026 – Present</span>
+            <span>🌐 Remote</span>
+            <span style="color:var(--accent3)">● Current</span>
+          </div>
+          <ul class="exp-points">
+            <li>Evaluate AI-generated responses for quality, relevance, safety, and formatting as part of RLHF-driven training workflows.</li>
+            <li>Support human-in-the-loop AI pipelines by reviewing content accuracy and adhering to project-specific guidelines.</li>
+            <li>Contribute to AI data operations tasks requiring analytical thinking and consistency across multiple concurrent assignments.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-card reveal">
+        <div class="exp-logo">TM</div>
+        <div>
+          <div class="exp-company">Tech Mahindra</div>
+          <div class="exp-role">Content Moderator</div>
+          <div class="exp-meta">
+            <span>📅 Oct 2025 – Jan 2026</span>
+            <span>📍 Hyderabad, India</span>
+          </div>
+          <ul class="exp-points">
+            <li>Reviewed and moderated high-volume user-generated content based on platform policies and quality guidelines.</li>
+            <li>Maintained accuracy and turnaround time standards while handling large-scale content review queues.</li>
+            <li>Identified and escalated policy violations to ensure safe and compliant digital content moderation processes.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-card reveal">
+        <div class="exp-logo">OW</div>
+        <div>
+          <div class="exp-company">Objectways Technologies</div>
+          <div class="exp-role">Data Annotation & Content Moderation Associate</div>
+          <div class="exp-meta">
+            <span>📅 Apr 2024 – Mar 2025</span>
+            <span>📍 Coimbatore, India</span>
+          </div>
+          <ul class="exp-points">
+            <li>Performed data annotation, labeling, and moderation across text, image, and video datasets for AI model training.</li>
+            <li>Maintained high accuracy through systematic classification and detailed content review on large-scale datasets.</li>
+            <li>Collaborated in productivity-driven environments requiring strong attention to detail and guideline adherence.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-card reveal">
+        <div class="exp-logo">FB</div>
+        <div>
+          <div class="exp-company">Family Business / Financial Operations</div>
+          <div class="exp-role">Operations & Customer Support Executive</div>
+          <div class="exp-meta">
+            <span>📅 Dec 2021 – Jul 2023</span>
+            <span>📍 Coimbatore, India</span>
+          </div>
+          <ul class="exp-points">
+            <li>Managed customer-facing interactions and operational support including financial follow-up and business coordination.</li>
+            <li>Developed strong communication, problem-solving, and customer handling skills in fast-paced environments.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-label">Key Projects</div>
+    <h2>What I've<br>built & delivered</h2>
+    <p class="section-intro">Hands-on AI data projects contributing to real machine learning systems across annotation, evaluation, and moderation.</p>
+    <div class="projects-grid">
+
+      <div class="project-card reveal">
+  <div class="project-icon">🚀</div>
+
+  <div class="project-title">
+    Signal by Barath — My First Self-Built Portfolio
+  </div>
+
+  <p class="project-desc">
+    Designed and deployed my first modern portfolio independently using AI-assisted development workflows, HTML, CSS, GitHub Pages, and creative UI direction — despite having no traditional coding background.
+  </p>
+
+  <div class="project-tags">
+    <span class="ptag">HTML</span>
+    <span class="ptag">CSS</span>
+    <span class="ptag">GitHub Pages</span>
+    <span class="ptag">AI-Assisted Dev</span>
+    <span class="ptag">Personal Branding</span>
+  </div>
+
+  <br>
+
+ <a href="./signal-by-barath-build-story.pdf"
+   target="_blank"
+   class="btn-secondary">
+   View Build Story →
+</a>
+</div>
+
+      <div class="project-card reveal">
+        <div class="project-icon">🤖</div>
+        <div class="project-title">RLHF & AI Response Evaluation</div>
+        <p class="project-desc">Evaluated AI-generated responses for quality, relevance, safety, formatting, and linguistic accuracy as part of RLHF training cycles. Performed response comparison, quality scoring, and guideline-based review to support iterative model improvement.</p>
+        <div class="project-tags">
+          <span class="ptag">RLHF</span>
+          <span class="ptag">Prompt Evaluation</span>
+          <span class="ptag">AI Training</span>
+          <span class="ptag">iMerit</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-icon">🏷️</div>
+        <div class="project-title">Data Annotation & Bounding Box Labeling</div>
+        <p class="project-desc">Annotated text, image, and video datasets including 2D bounding boxes, classification tags, and content labeling for ML model training pipelines. Supported dataset quality validation workflows ensuring readiness for machine learning systems.</p>
+        <div class="project-tags">
+          <span class="ptag">2D Bounding Boxes</span>
+          <span class="ptag">Image Labeling</span>
+          <span class="ptag">Video Annotation</span>
+          <span class="ptag">Objectways</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-icon">🎙️</div>
+        <div class="project-title">Audio Quality Control (Audio QC)</div>
+        <p class="project-desc">Reviewed raw audio files for speech clarity, pronunciation accuracy, background noise, and audio inconsistencies. Documented quality defects and maintained standards for audio-based AI training and media production workflows.</p>
+        <div class="project-tags">
+          <span class="ptag">Audio QC</span>
+          <span class="ptag">Speech Review</span>
+          <span class="ptag">Quality Standards</span>
+          <span class="ptag">AI Media</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-icon">🛡️</div>
+        <div class="project-title">Content Moderation Operations</div>
+        <p class="project-desc">Reviewed user-generated content for policy compliance across high-volume queues, escalating violations per operational procedures. Maintained content safety and quality standards across multiple moderation projects in remote and on-site settings.</p>
+        <div class="project-tags">
+          <span class="ptag">Content Moderation</span>
+          <span class="ptag">Policy Enforcement</span>
+          <span class="ptag">Safety Review</span>
+          <span class="ptag">Tech Mahindra</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label">Skills & Tools</div>
+    <h2>What I bring<br>to the table</h2>
+    <p class="section-intro">A complete toolkit built for AI data operations, annotation, and quality assurance workflows.</p>
+    <div class="skills-grid">
+
+      <div class="skill-flip reveal">
+        <div class="skill-flip-inner">
+          <div class="skill-front">
+            <div class="skill-cat-icon">🧠</div>
+            <div class="skill-cat-title">AI / ML Knowledge</div>
+            <div class="skill-cat-hint">Hover to see skills →</div>
+          </div>
+          <div class="skill-back">
+            <div class="skill-back-title">🧠 AI / ML Knowledge</div>
+            <ul class="skill-list">
+              <li>RLHF (Reinforcement Learning from Human Feedback)</li>
+              <li>NLP-based Content Review</li>
+              <li>AI Training & Evaluation</li>
+              <li>Human-in-the-Loop Workflows</li>
+              <li>Response Comparison & Ranking</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-flip reveal">
+        <div class="skill-flip-inner">
+          <div class="skill-front">
+            <div class="skill-cat-icon">🏷️</div>
+            <div class="skill-cat-title">Annotation & Labeling</div>
+            <div class="skill-cat-hint">Hover to see skills →</div>
+          </div>
+          <div class="skill-back">
+            <div class="skill-back-title">🏷️ Annotation & Labeling</div>
+            <ul class="skill-list">
+              <li>2D Bounding Box Annotation</li>
+              <li>Text / Image / Video Annotation</li>
+              <li>Audio Labeling & QC</li>
+              <li>Content Classification & Tagging</li>
+              <li>Dataset Preparation & Validation</li>
+              <li>Multi-modal Data Labeling</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-flip reveal">
+        <div class="skill-flip-inner">
+          <div class="skill-front">
+            <div class="skill-cat-icon">🛡️</div>
+            <div class="skill-cat-title">Content Moderation</div>
+            <div class="skill-cat-hint">Hover to see skills →</div>
+          </div>
+          <div class="skill-back">
+            <div class="skill-back-title">🛡️ Content Moderation</div>
+            <ul class="skill-list">
+              <li>Policy-based Content Review</li>
+              <li>Safety & Compliance Review</li>
+              <li>Escalation Workflows</li>
+              <li>High-Volume Moderation</li>
+              <li>Violation Detection & Reporting</li>
+              <li>Digital Safety Standards</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-flip reveal">
+        <div class="skill-flip-inner">
+          <div class="skill-front">
+            <div class="skill-cat-icon">🛠️</div>
+            <div class="skill-cat-title">Tools & Platforms</div>
+            <div class="skill-cat-hint">Hover to see skills →</div>
+          </div>
+          <div class="skill-back">
+            <div class="skill-back-title">🛠️ Tools & Platforms</div>
+            <ul class="skill-list">
+              <li>Amazon SageMaker</li>
+              <li>DataCompute</li>
+              <li>AI-assisted Development</li>
+              <li>GitHub Deployment</li>
+              <li>VS Code Workflow</li>
+              <li>Quality Review Systems</li>
+              <li>Content Moderation Tools</li>
+              <li>Microsoft 365 & Outlook</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-flip reveal">
+        <div class="skill-flip-inner">
+          <div class="skill-front">
+            <div class="skill-cat-icon">📊</div>
+            <div class="skill-cat-title">Productivity & Reporting</div>
+            <div class="skill-cat-hint">Hover to see skills →</div>
+          </div>
+          <div class="skill-back">
+            <div class="skill-back-title">📊 Productivity & Reporting</div>
+            <ul class="skill-list">
+              <li>MS Excel & Google Sheets</li>
+              <li>Documentation & Reporting</li>
+              <li>Data Analysis Basics</li>
+              <li>Internet Research</li>
+              <li>Prompt Understanding</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-flip reveal">
+        <div class="skill-flip-inner">
+          <div class="skill-front">
+            <div class="skill-cat-icon">⚡</div>
+            <div class="skill-cat-title">Soft Skills</div>
+            <div class="skill-cat-hint">Hover to see skills →</div>
+          </div>
+          <div class="skill-back">
+            <div class="skill-back-title">⚡ Soft Skills</div>
+            <ul class="skill-list">
+              <li>Attention to Detail</li>
+              <li>Consistency & Accuracy</li>
+              <li>Time Management</li>
+              <li>Remote Collaboration</li>
+              <li>Fast Learner & Adaptable</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-flip reveal">
+        <div class="skill-flip-inner">
+          <div class="skill-front">
+            <div class="skill-cat-icon">🎬</div>
+            <div class="skill-cat-title">Creative Media</div>
+            <div class="skill-cat-hint">Hover to see skills →</div>
+          </div>
+          <div class="skill-back">
+            <div class="skill-back-title">🎬 Creative Media</div>
+            <ul class="skill-list">
+              <li>Video Editing (CapCut / Premiere Pro Basics)</li>
+              <li>Content Storytelling</li>
+              <li>Short-form Video Creation</li>
+              <li>Visual Structuring & Editing Sense</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+            <div class="skill-flip reveal">
+        <div class="skill-flip-inner">
+          <div class="skill-front">
+            <div class="skill-cat-icon">⚙️</div>
+            <div class="skill-cat-title">GitHub Deployment</div>
+            <div class="skill-cat-hint">Hover to see skills →</div>
+          </div>
+          <div class="skill-back">
+            <div class="skill-back-title">⚙️ GitHub Deployment</div>
+            <ul class="skill-list">
+              <li>HTML & CSS Fundamentals</li>
+              <li>Frontend UI Customization</li>
+              <li>Prompt Engineering</li>
+              <li>Creative AI Workflow</li>
+              <li>Personal Portfolio Development</li>
+              <li>GitHub Pages Hosting</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <div class="section-label">Education</div>
+    <h2>Academic<br>background</h2>
+    <br>
+    <div class="edu-card reveal">
+      <div class="edu-icon">🎓</div>
+      <div>
+        <div class="edu-degree">Bachelor of Commerce (B.Com) — Professional Accounting</div>
+        <div class="edu-school">Hindustan College of Arts and Science, Coimbatore</div>
+        <div class="edu-year">2018 – 2021</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="section-label">Contact</div>
+        <h2>Let's work<br>together</h2>
+        <p class="section-intro" style="margin-bottom:0">Open to remote freelance projects, full-time AI data roles, and annotation opportunities globally. Let's connect!</p>
+        <div class="contact-links">
+          <a href="mailto:bkpersonalacc@gmail.com" class="contact-link">
+            <div class="contact-link-icon">✉️</div>
+            <div>
+              <div class="contact-link-label">Email</div>
+              <div class="contact-link-value">bkpersonalacc@gmail.com</div>
+            </div>
+          </a>
+          <a href="tel:+917395826473" class="contact-link">
+            <div class="contact-link-icon">📞</div>
+            <div>
+              <div class="contact-link-label">Phone</div>
+              <div class="contact-link-value">+91 7395826473</div>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/barath-kumar-201984p" target="_blank" class="contact-link">
+            <div class="contact-link-icon">💼</div>
+            <div>
+              <div class="contact-link-label">LinkedIn</div>
+              <div class="contact-link-value">linkedin.com/in/barath-kumar-201984p</div>
+            </div>
+          </a>
+          <div class="contact-link" style="cursor:default">
+            <div class="contact-link-icon">📍</div>
+            <div>
+              <div class="contact-link-label">Location</div>
+              <div class="contact-link-value">Coimbatore, Tamil Nadu, India</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="John Smith">
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="john@company.com">
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <input type="text" placeholder="Project / Opportunity / Collaboration">
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Tell me about the role or project..."></textarea>
+        </div>
+        <button class="form-submit" onclick="alert('Thanks for reaching out! Please email directly at bkpersonalacc@gmail.com')">Send Message →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CURSOR BALL -->
+<div id="cursor-ball"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© 2026 Barath Kumar S · AI Data Operations Specialist</div>
+  <div class="footer-links">
+    <a href="mailto:bkpersonalacc@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/barath-kumar-201984p" target="_blank">LinkedIn</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+  </div>
+</footer>
+
+<script>
+  // ── SCROLL REVEAL ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Stagger children reveals
+  document.querySelectorAll('.exp-timeline, .projects-grid, .skills-grid, .about-facts, .contact-links').forEach(parent => {
+    parent.querySelectorAll('.reveal').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 0.08}s`;
+    });
+  });
+</script>
+</body>
+</html>
